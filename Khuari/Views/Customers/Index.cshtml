@@ -1,0 +1,26 @@
+﻿@model List<Khuari.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Customers</h1>
+
+<table class="table table-bordered table-hover">
+    <tr>
+
+        <td>Customer Name</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.C_Name, "Details", "Customers", new
+           {
+               id = item.C_Id
+           }, null)
+            </td>
+        </tr>
+    }
+
+</table>

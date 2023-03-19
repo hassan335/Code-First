@@ -10,9 +10,14 @@ namespace Khuari.Models
     {
         [Key]
         public int C_Id { get; set; }
-
+        [Required]
+        [StringLength(255)]
         public string C_Name { get; set; }
+        public bool IsSubscribedToNewsLetter { get; set; }
 
+        public MembershipType MembershipType { get; set; }
+
+        public byte MembershipTypeId { get; set; }
 
 
     }
