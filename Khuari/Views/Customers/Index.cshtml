@@ -8,17 +8,21 @@
 <table class="table table-bordered table-hover">
     <tr>
 
-        <td>Customer Name</td>
+        <th>Customer Name</th>
+        <th>Membership Type</th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.ActionLink(item.C_Name, "Details", "Customers", new
+                @Html.ActionLink(item.C_Name, "Edit", "Customers", new
            {
                id = item.C_Id
            }, null)
+            </td>
+            <td>
+                @item.MembershipType.Name
             </td>
         </tr>
     }

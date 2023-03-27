@@ -193,6 +193,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,14 +229,101 @@
     <Compile Include="Migrations\202303190802378_limitthelenghtofcustomername.designer.cs">
       <DependentUpon>202303190802378_limitthelenghtofcustomername.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303200254411_AddingNamePropertyInToMembershipType.cs" />
+    <Compile Include="Migrations\202303200254411_AddingNamePropertyInToMembershipType.designer.cs">
+      <DependentUpon>202303200254411_AddingNamePropertyInToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200257511_PopulateNameColMembershipType.cs" />
+    <Compile Include="Migrations\202303200257511_PopulateNameColMembershipType.designer.cs">
+      <DependentUpon>202303200257511_PopulateNameColMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200320320_AddingDOBPropertyInToCustomer.cs" />
+    <Compile Include="Migrations\202303200320320_AddingDOBPropertyInToCustomer.designer.cs">
+      <DependentUpon>202303200320320_AddingDOBPropertyInToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200323298_AddingDOBNullablePropertyInToCustomer.cs" />
+    <Compile Include="Migrations\202303200323298_AddingDOBNullablePropertyInToCustomer.designer.cs">
+      <DependentUpon>202303200323298_AddingDOBNullablePropertyInToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200420209_addingMovieClass.cs" />
+    <Compile Include="Migrations\202303200420209_addingMovieClass.designer.cs">
+      <DependentUpon>202303200420209_addingMovieClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200426034_addingGenreInMovie.cs" />
+    <Compile Include="Migrations\202303200426034_addingGenreInMovie.designer.cs">
+      <DependentUpon>202303200426034_addingGenreInMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200506384_deletingextracolumns.cs" />
+    <Compile Include="Migrations\202303200506384_deletingextracolumns.designer.cs">
+      <DependentUpon>202303200506384_deletingextracolumns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200518534_GenerateTableGener.cs" />
+    <Compile Include="Migrations\202303200518534_GenerateTableGener.designer.cs">
+      <DependentUpon>202303200518534_GenerateTableGener.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200524511_GenerTable.cs" />
+    <Compile Include="Migrations\202303200524511_GenerTable.designer.cs">
+      <DependentUpon>202303200524511_GenerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200529001_GenerTableForGener.cs" />
+    <Compile Include="Migrations\202303200529001_GenerTableForGener.designer.cs">
+      <DependentUpon>202303200529001_GenerTableForGener.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200534242_GenerTableForGenerInDB.cs" />
+    <Compile Include="Migrations\202303200534242_GenerTableForGenerInDB.designer.cs">
+      <DependentUpon>202303200534242_GenerTableForGenerInDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200536148_GenerTableForGenerInDBFinal.cs" />
+    <Compile Include="Migrations\202303200536148_GenerTableForGenerInDBFinal.designer.cs">
+      <DependentUpon>202303200536148_GenerTableForGenerInDBFinal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200543181_AddGenerclass.cs" />
+    <Compile Include="Migrations\202303200543181_AddGenerclass.designer.cs">
+      <DependentUpon>202303200543181_AddGenerclass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200545398_removeGener.cs" />
+    <Compile Include="Migrations\202303200545398_removeGener.designer.cs">
+      <DependentUpon>202303200545398_removeGener.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200549362_rgener.cs" />
+    <Compile Include="Migrations\202303200549362_rgener.designer.cs">
+      <DependentUpon>202303200549362_rgener.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200551529_rge.cs" />
+    <Compile Include="Migrations\202303200551529_rge.designer.cs">
+      <DependentUpon>202303200551529_rge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200553271_ge.cs" />
+    <Compile Include="Migrations\202303200553271_ge.designer.cs">
+      <DependentUpon>202303200553271_ge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200558111_gnr.cs" />
+    <Compile Include="Migrations\202303200558111_gnr.designer.cs">
+      <DependentUpon>202303200558111_gnr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303200559252_gnre.cs" />
+    <Compile Include="Migrations\202303200559252_gnre.designer.cs">
+      <DependentUpon>202303200559252_gnre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303232345165_addGener.cs" />
+    <Compile Include="Migrations\202303232345165_addGener.designer.cs">
+      <DependentUpon>202303232345165_addGener.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303240025450_populateMoviestbl.cs" />
+    <Compile Include="Migrations\202303240025450_populateMoviestbl.designer.cs">
+      <DependentUpon>202303240025450_populateMoviestbl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\NewCustomerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -299,6 +387,9 @@
     <Content Include="Views\Shared\_navbr.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Customers\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -343,6 +434,72 @@
     <EmbeddedResource Include="Migrations\202303190802378_limitthelenghtofcustomername.resx">
       <DependentUpon>202303190802378_limitthelenghtofcustomername.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200254411_AddingNamePropertyInToMembershipType.resx">
+      <DependentUpon>202303200254411_AddingNamePropertyInToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200257511_PopulateNameColMembershipType.resx">
+      <DependentUpon>202303200257511_PopulateNameColMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200320320_AddingDOBPropertyInToCustomer.resx">
+      <DependentUpon>202303200320320_AddingDOBPropertyInToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200323298_AddingDOBNullablePropertyInToCustomer.resx">
+      <DependentUpon>202303200323298_AddingDOBNullablePropertyInToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200420209_addingMovieClass.resx">
+      <DependentUpon>202303200420209_addingMovieClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200426034_addingGenreInMovie.resx">
+      <DependentUpon>202303200426034_addingGenreInMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200506384_deletingextracolumns.resx">
+      <DependentUpon>202303200506384_deletingextracolumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200518534_GenerateTableGener.resx">
+      <DependentUpon>202303200518534_GenerateTableGener.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200524511_GenerTable.resx">
+      <DependentUpon>202303200524511_GenerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200529001_GenerTableForGener.resx">
+      <DependentUpon>202303200529001_GenerTableForGener.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200534242_GenerTableForGenerInDB.resx">
+      <DependentUpon>202303200534242_GenerTableForGenerInDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200536148_GenerTableForGenerInDBFinal.resx">
+      <DependentUpon>202303200536148_GenerTableForGenerInDBFinal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200543181_AddGenerclass.resx">
+      <DependentUpon>202303200543181_AddGenerclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200545398_removeGener.resx">
+      <DependentUpon>202303200545398_removeGener.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200549362_rgener.resx">
+      <DependentUpon>202303200549362_rgener.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200551529_rge.resx">
+      <DependentUpon>202303200551529_rge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200553271_ge.resx">
+      <DependentUpon>202303200553271_ge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200558111_gnr.resx">
+      <DependentUpon>202303200558111_gnr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303200559252_gnre.resx">
+      <DependentUpon>202303200559252_gnre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303232345165_addGener.resx">
+      <DependentUpon>202303232345165_addGener.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303240025450_populateMoviestbl.resx">
+      <DependentUpon>202303240025450_populateMoviestbl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

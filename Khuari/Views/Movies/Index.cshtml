@@ -1,0 +1,33 @@
+﻿@model List<Khuari.Models.Movie>
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h1>Movies</h1>
+
+    <table class="table table-bordered table-hover">
+        <tr>
+
+            <th>Movie Name</th>
+            <th>Genre</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.M_Name, "Details", "Movies", new
+               {
+                   id = item.M_Id
+               }, null)
+                </td>
+                <td>
+                    @item.Genre.G_Name
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
