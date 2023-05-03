@@ -1,0 +1,51 @@
+﻿@model Khuari.ViewModels.NewMoviesViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<h2>New Movie</h2>
+
+@using (Html.BeginForm("Save", "Movies", "post"))
+{
+    @*@Html.ValidationSummary()*@
+    <div class="form-group">
+        @Html.LabelFor(x => x.movie.M_Name)
+        @Html.TextBoxFor(x => x.movie.M_Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.movie.M_Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.movie.ReleaseDate)
+        @Html.TextBoxFor(x =>x.movie.ReleaseDate, "{0:d MMM yyy}", new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.movie.ReleaseDate)
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.movie.G_Id)
+        @Html.DropDownListFor(x => x.movie.G_Id, new SelectList(Model.Gener, "G_Id", "G_Name"), "Select Gener", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.movie.G_Id)
+    </div>
+
+    
+    <div class="form-group">
+        @Html.LabelFor(x => x.movie.NumberInStockk)
+        @Html.TextBoxFor(x => x.movie.NumberInStockk, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.movie.NumberInStockk)
+    </div>
+
+
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(x => x.movie.M_Id)
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </div>
+
+
+
+}
+

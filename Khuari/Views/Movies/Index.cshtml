@@ -5,6 +5,10 @@
     }
 
     <h1>Movies</h1>
+<div class="form-group text-right"> 
+    <button type="submit" class="btn btn-primary " onclick="redirectToAnotherPage()" >New Movie</button>
+
+</div>
 
     <table class="table table-bordered table-hover">
         <tr>
@@ -17,7 +21,7 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.M_Name, "Details", "Movies", new
+                    @Html.ActionLink(item.M_Name, "Edit", "Movies", new
                {
                    id = item.M_Id
                }, null)
@@ -29,5 +33,10 @@
         }
 
     </table>
-
+<script>
+    function redirectToAnotherPage() {
+        var url = '@Url.Action("New", "Movies")';
+        window.location.href = url;
+    }
+</script>
 

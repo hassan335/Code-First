@@ -3,19 +3,22 @@
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <h2>New Customer</h2>
 
 @using (Html.BeginForm("Save", "Customers", "post"))
 {
+    @Html.ValidationSummary()
     <div class="form-group">
         @Html.LabelFor(x => x.customer.C_Name)
         @Html.TextBoxFor(x => x.customer.C_Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.customer.C_Name)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(x => x.customer.DOB)
         @Html.TextBoxFor(x => x.customer.DOB,"{0:d MMM yyy}",new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.customer.DOB)
     </div>
 
    
@@ -23,12 +26,16 @@
     <div class="form-group">
         @Html.LabelFor(x => x.customer.MembershipTypeId)
         @Html.DropDownListFor(x => x.customer.MembershipTypeId, new SelectList(Model.MembershipType, "Id", "Name"), "Select Membsership Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.customer.MembershipTypeId)
     </div>
     <div>
         <label>
             @Html.CheckBoxFor(x => x.customer.IsSubscribedToNewsLetter) Subscribed to news letter
         </label>
     </div>
+
+ @Html.AntiForgeryToken()
+
     @Html.HiddenFor(x=>x.customer.C_Id)
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -39,3 +46,7 @@
 
 }
 
+@*@section script
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

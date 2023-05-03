@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Khuari.ViewModels;
+using System.Data.Entity.Validation;
 
 namespace Khuari.Controllers
 {
@@ -57,11 +58,12 @@ namespace Khuari.Controllers
 
         
         public ActionResult New()
-        {
+       {
             var mmbrhiptypes = _context.MembershipTypes.ToList();
 
             var ViewModel = new NewCustomerViewModel
             {
+                
                 MembershipType = mmbrhiptypes
             };
 
@@ -71,27 +73,63 @@ namespace Khuari.Controllers
 
         #region saving form data
 
+       
         [HttpPost]
-        public ActionResult Save( NewCustomerViewModel cus)
+        [ValidateAntiForgeryToken]
+        public ActionResult Save([Bind(Exclude = "C_Id")] NewCustomerViewModel cus)
         {
             var customer = cus.customer;
 
-            if (customer.C_Id ==0)
+            ModelState.Remove(customer.C_Id.ToString());
+            if (!ModelState.IsValid) // && customer.C_Id != 0
             {
-                _context.Customers.Add(customer);
+                
+                var mmbrhiptypes = _context.MembershipTypes.ToList();
+
+                var ViewModel = new NewCustomerViewModel
+                {
+                    customer = customer,
+                    MembershipType = mmbrhiptypes
+                };
+
+
+                return View("New", ViewModel);
             }
             else
             {
-                var CusInDB = _context.Customers.Single(x => x.C_Id == customer.C_Id);
-                CusInDB.C_Name = customer.C_Name;
-                CusInDB.DOB = customer.DOB;
-                CusInDB.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
-                CusInDB.MembershipTypeId = customer.MembershipTypeId;
+                if (customer.C_Id == null)
+                {
+                    //byte idindb = _context.Customers.OrderByDescending(x => x.C_Id).Select(x => x.C_Id).FirstOrDefault();
+                    //customer.C_Id = Convert.ToByte(0);
+                    _context.Customers.Add(customer);
+                }
+                else
+                {
+                    var CusInDB = _context.Customers.Single(x => x.C_Id == customer.C_Id);
+                    CusInDB.C_Name = customer.C_Name;
+                    CusInDB.DOB = customer.DOB;
+                    CusInDB.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+                    CusInDB.MembershipTypeId = customer.MembershipTypeId;
+                }
+
+
+                try
+                {
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+
+                
+                return RedirectToAction("Index", "Customers");
             }
 
-            
-            _context.SaveChanges();
-            return RedirectToAction("Index", "Customers");
+
+
+
 
         }
 

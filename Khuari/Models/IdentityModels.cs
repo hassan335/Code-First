@@ -24,13 +24,16 @@ namespace Khuari.Models
         public DbSet<Movie> Movies { get; set; }
 
         public DbSet<MembershipType> MembershipTypes { get; set; }
+        public DbSet<Genre> Generes { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+           
         }
 
         public static ApplicationDbContext Create()
         {
+           
             return new ApplicationDbContext();
         }
 
