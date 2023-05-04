@@ -85,7 +85,7 @@ namespace Khuari.Controllers.API
         [HttpDelete]
         public void DeleteCustomer(int id)
         {
-            int idt;
+     
             var customerInDB = _context.Customers.SingleOrDefault(x => x.C_Id == id);
 
             if (customerInDB == null)
