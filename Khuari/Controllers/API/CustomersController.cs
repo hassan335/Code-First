@@ -28,24 +28,24 @@ namespace Khuari.Controllers.API
           return  _context.Customers.ToList().Select(Mapper.Map<Customer,CustomerDTO>);
         }
         //Get//API/customers/id
-        public CustomerDTO GetCustomers(int id)
+        public IHttpActionResult GetCustomers(int id)
         {
             var customer = _context.Customers.SingleOrDefault(x => x.C_Id == id);
 
             if (customer== null)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                NotFound();
             }
-            return Mapper.Map<Customer,CustomerDTO>(customer);
+            return Ok(Mapper.Map<Customer, CustomerDTO>(customer)) ;
         }
 
         //Post//API/customers
         [HttpPost]
-        public CustomerDTO CreateCustomer(CustomerDTO customerdto)
+        public IHttpActionResult CreateCustomer(CustomerDTO customerdto)
         {
             if (!ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+               return BadRequest();
             }
             else
             {
@@ -55,7 +55,7 @@ namespace Khuari.Controllers.API
                 _context.SaveChanges();
                 customerdto.C_Id = customer.C_Id;
             }
-            return customerdto;
+            return Created(new Uri(Request.RequestUri+"/"+ customerdto.C_Id),customerdto);
         }
         //Put//API/customers/1
         [HttpPut]
