@@ -15,6 +15,10 @@ namespace Khuari.App_Start
         {
             Mapper.CreateMap<Customer, CustomerDTO>().ForMember(dest => dest.C_Id , opt => opt.Ignore());
             Mapper.CreateMap<CustomerDTO, Customer>().ForMember(dest => dest.C_Id, opt => opt.Ignore());
+
+            Mapper.CreateMap<Movie, MovieDTO>()/*.ForMember(dest => dest.M_Id, opt => opt.Ignore())*/;
+            Mapper.CreateMap<MovieDTO, Movie>()/*.ForMember(dest => dest.M_Id, opt => opt.Ignore())*/;
+
         }
     }
 }
