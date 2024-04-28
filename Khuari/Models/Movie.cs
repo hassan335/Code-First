@@ -13,7 +13,7 @@ namespace Khuari.Models
 
 
         [Key]
-        public int? M_Id { get; set; }
+        public int M_Id { get; set; }
 
         [Display(Name = "Movie Name")]
         [Required(ErrorMessage = "Movie Name is required")]
@@ -29,13 +29,16 @@ namespace Khuari.Models
         [Display(Name = "Number In Stock")]
         public short NumberInStockk { get; set; }
 
+        public short NumberAvaliable { get; set; }
+
 
 
         public Genre Genre { get; set; }
         [Required(ErrorMessage = "Please Select Gener")]
         [Display (Name ="Gener")]
+         
         public int G_Id { get; set; }
 
-
+        
     }
 }

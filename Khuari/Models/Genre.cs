@@ -13,5 +13,8 @@ namespace Khuari.Models
 
         public string G_Name { get; set; }
 
+
+        
+
     }
 }

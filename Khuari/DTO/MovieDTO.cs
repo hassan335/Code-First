@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Khuari.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,7 +25,7 @@ namespace Khuari.DTO
 
 
 
-        //public Genre Genre { get; set; }
+        public Genre Genre { get; set; }
       
         public int G_Id { get; set; }
 

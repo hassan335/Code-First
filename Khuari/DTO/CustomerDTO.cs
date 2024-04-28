@@ -22,10 +22,10 @@ namespace Khuari.DTO
         //[Display(Name = "Check for subscribed")]
         public bool IsSubscribedToNewsLetter { get; set; }
 
-        
+        public MembershipTypeDTO MembershipType { get; set; }
 
 
-     
+
         public byte MembershipTypeId { get; set; }
 
         //[MembershipTypeValidations]

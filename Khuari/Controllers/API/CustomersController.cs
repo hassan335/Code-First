@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Khuari.DTO;
 using Khuari.Models;
+using System.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,24 @@ namespace Khuari.Controllers.API
 
 
         //Get//API/customers
-        public IEnumerable<CustomerDTO> GetCustomers()
+        public IEnumerable<CustomerDTO> GetCustomers(string CName= null)
         {
-          return  _context.Customers.ToList().Select(Mapper.Map<Customer,CustomerDTO>);
+            var Query = _context.Customers.Include(x => x.MembershipType);
+            if (!string.IsNullOrEmpty(CName))
+            {
+              return Query.Where(x=>x.C_Name.Contains(CName)).ToList().Select(Mapper.Map<Customer, CustomerDTO>);
+            }
+            else
+            {
+                return Query.ToList().Select(Mapper.Map<Customer, CustomerDTO>);
+            }
+
+                
+                
+                
+                
+                
+               
         }
         //Get//API/customers/id
         public IHttpActionResult GetCustomers(int id)

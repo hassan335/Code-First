@@ -10,6 +10,7 @@ using System.Data.Entity.Validation;
 
 namespace Khuari.Controllers
 {
+    [Authorize]
     public class CustomersController : Controller
     {
 

@@ -25,10 +25,18 @@ namespace Khuari.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            var Movies = _context.Movies.Include(x => x.Genre).ToList();
-            return View(Movies);
+            if (User.IsInRole(Roles.CanManageMovies))
+          
+                return View("List");
+            
+                return View("ReadOnlyList");
 
-         }
+
+
+            //var Movies = _context.Movies.Include(x => x.Genre).ToList();
+            //return View(Movies);
+
+        }
 
         public ActionResult Edit(int id)
         {
@@ -59,7 +67,7 @@ namespace Khuari.Controllers
 
 
         }
-
+        [Authorize(Roles = Roles.CanManageMovies)]
         public ActionResult New()
         {
             var gener = _context.Generes.ToList();

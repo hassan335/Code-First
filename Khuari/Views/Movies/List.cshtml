@@ -1,0 +1,116 @@
+﻿@*@model List<Khuari.Models.Movie>*@
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h1>Movies</h1>
+<div class="form-group text-right"> 
+    <button type="submit" class="btn btn-primary" onclick="redirectToAnotherPage()" >New Movie</button>
+
+</div>
+
+    <table id="tblmovie" class="table table-bordered table-hover">
+        <thead>
+
+
+
+            <tr>
+
+                <th>Movie Name</th>
+                <th>Genre</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+
+
+
+
+
+
+@section scripts{
+    <script>    
+
+
+
+
+        $(document).ready(function () {
+            var table = $('#tblmovie').DataTable({
+
+                ajax: {
+                    url: "/API/Movies",
+                    dataSrc: ""
+
+                },
+                columns: [
+                    {
+                        data: "m_Name",
+                        render: function (data, type, m) {
+                            return "<a href='/Movies/Edit/" + m.m_Id + " '>" + data + "</a>";
+                        }
+                    }, {
+                        data: "genre.g_Name"
+
+                    },
+                    {
+                        data: "m_Id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete'  data-movie-id = " + data + " > Delete</button>";
+                        }
+                    }
+
+                ]
+
+
+
+
+
+            });
+
+            $('#tblmovie').on('click', '.js-delete', function () {
+                var btn = $(this);
+                bootbox.confirm('Are you sure ?', function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/API/Movies/" + btn.attr('data-movie-id'),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(btn.parents('tr')).remove().draw();
+                            }
+
+                        });
+                    }
+
+
+
+                })
+
+            });
+        });
+
+
+
+        function redirectToAnotherPage()
+        {
+            
+                window.location.href = '/Movies/New'; // Replace with the desired URL of the page
+            
+        }
+
+
+
+    </script>
+
+}
+
+
+
+
+

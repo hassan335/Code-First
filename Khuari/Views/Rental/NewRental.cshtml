@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "NewRental";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>NewRental</h2>
+
+
+<form id="RentalForm">
+   
+    <div class="form-group">
+        <label>Customer</label>
+        <div class="tt-container" style="position:relative">
+
+            <input type="text" data-rule-validCustomer="true" name="customer" required id="customer" value="" class="form-control" />
+
+        </div>
+    </div>
+   
+    
+  
+
+    <div class="form-group">
+        <label>Movies</label>
+        <div class="tt-container" style="position:relative">
+            <input type="text" data-rule-validMovie="true" name="movie"  id="movie" value="" class="form-control" />
+
+            </div>
+        </div>
+
+
+
+    <div class="row" >
+        <div class="col-md-2">
+            <ul id="movies" class="list-group"></ul>
+        </div>
+
+    </div>
+
+    
+
+    <button class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+    <script>
+    
+
+
+
+            var vm = {
+                movieIds: []
+        };
+        debugger;
+            var movies = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('m_Name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/API/Movies?mName=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#movie').typeahead({
+                minLength: 1,
+                highlight: true
+            }, {
+                    name: 'movies',
+                    display: 'm_Name',
+                    source: movies,
+                    limit: 10
+                }).on("typeahead:select", function (e, movie) {
+                    $('#movies').append('<li class="list-group-item"> ' + movie.m_Name + '</li>');
+                    $('#movie').typeahead('val', '');
+                    vm.movieIds.push(movie.m_Id);
+                });
+
+
+
+
+
+
+
+
+
+
+
+            var customers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('c_Name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+                remote: {
+                    url: '/API/customers?CName=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#customer').typeahead({
+
+                minLenght: 3,
+                highlight: true
+            }, {
+                    name: 'customers',
+                    display: 'c_Name',
+                    source: customers,
+                    limit: 10
+                }).on("typeahead:select", function (e, customer) {
+                    vm.Customer_ID = customer.c_Id
+                });
+
+
+
+            $.validator.addMethod("validCustomer", function () {
+
+
+                return vm.Customer_ID && vm.Customer_ID !== 0 
+
+
+            }, "Please Select a Valid Customer")
+
+
+            $.validator.addMethod("validMovie", function () {
+
+
+                return vm.movieIds.length > 0
+
+
+            }, "Please Select a Valid Movie")
+
+
+
+            $("#RentalForm").validate({
+                submitHandler: function () {
+                    console.log(vm)
+                   
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/API/Rental",
+                        data: vm,
+                        success: function (response) {
+                            // Handle the server response here (if needed)
+                            toastr.success("Form has been submitted")
+
+                            $('#customer').typeahead("val", "")
+                            $('#movie').typeahead("val", "")
+                            $('#movies').empty();
+
+                            vm = { movieIds: [] };
+
+                            validator.resetForm();
+                                
+
+
+                        },
+                        error: function (error) {
+                            // Handle any error that occurred during the form submission
+                            toastr.error("Something went wrong")
+                        }
+                          
+                    });
+                    return false
+                }
+             
+            })
+            
+
+            $("#RentalForm").submit(function (event) {
+
+               
+
+
+
+
+            })
+
+
+
+      
+
+       
+
+
+
+    </script>
+
+
+}
+
+
+
+
